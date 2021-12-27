@@ -15,5 +15,7 @@ usersRoutes.put('/users', validadeUsers.update, users.updateUser);
 
 usersRoutes.patch('/users/avatar', Upload.single('avatar'), users.updateUserAvatar);
 
+usersRoutes.patch('/users/change-password', validadeUsers.changePassword, users.changePassword);
+
 export default usersRoutes;
  

@@ -61,10 +61,24 @@ const updateUserAvatar = async (req: Request, res: Response): Promise<Response> 
 	}
 }
 
+const changePassword = async (req: Request, res: Response): Promise<Response> => {
+	try {
+		const { id } = req.user;
+		const { oldPassword, newPassword } = req.body;
+
+		await service.changePassword(id, oldPassword, newPassword);
+
+		return res.json({ message: 'Senha alterada!' });
+	} catch (error) {
+		return res.status(400).json(error);
+	}
+}
+
 export default {
 	create,
 	getList,
 	getUserById,
 	updateUser,
 	updateUserAvatar,
+	changePassword,
 }

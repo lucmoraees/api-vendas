@@ -49,7 +49,7 @@ const forgotPassword = async (email: string) => {
 		to: email,
 		subject: 'Token para redefinição da senha',
 		nameTemplate: 'reset-password',
-		variaveis: [{ token: userToken.token }],
+		variaveis: { token: userToken.token, nome: user.nome },
 	});
 }
 

@@ -8,6 +8,7 @@ import ExceptionError from '../../../errors/exceptionError';
 import { hashPassword } from '../../../utils';
 import mapper from '../mapper';
 import uploadConfigs from '../../../configs/upload';
+import { compare } from 'bcryptjs';
 
 const create = async (data: CreateUser): Promise<User> => {
 	const userRepository = getCustomRepository(UsersRepository);
@@ -86,10 +87,34 @@ const updateUserAvatar = async (id: number, fileName: string): Promise<User> => 
 	return updated;
 }
 
+const changePassword = async (id: number, oldPassword: string, newPassword: string): Promise<void> => {
+	const userRepository = getCustomRepository(UsersRepository);
+
+	const user = await userRepository.findById(id);
+
+	if (!user) {
+		throw new ExceptionError('Usuário não encontrado');
+	}
+
+	const isValidPassword = await compare(
+		oldPassword,
+		user.password,
+	);
+
+	if (!isValidPassword) {
+		throw new ExceptionError('Senha incorreta!');
+	}
+
+	const passwordHashed = await hashPassword(newPassword);
+
+	await mapper.updateUser(id, { password: passwordHashed });
+}
+
 export default {
 	create,
 	getList,
 	getUserById,
 	updateUser,
 	updateUserAvatar,
+	changePassword,
 }

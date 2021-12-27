@@ -7,10 +7,10 @@ interface SendEmail {
   to: string;
   subject: string;
   nameTemplate: string;
-	variaveis?: ObjectGeneric[],
+	variaveis?: ObjectGeneric,
 }
 
-const getTemplate = (name: string, variaveis: ObjectGeneric[]): string => {
+const getTemplate = (name: string, variaveis: ObjectGeneric): string => {
 	const filePath = `${__dirname}/templates/${name}.html`;
 	
 	const html = fs.readFileSync(filePath, 'utf-8').toString();
@@ -26,7 +26,7 @@ export const sendEmail = async ({
   to,
   subject,
   nameTemplate,
-	variaveis = [],
+	variaveis = {},
 }: SendEmail): Promise<SentMessageInfo> => {
 	const accountTest = await nodemailer.createTestAccount();
 	

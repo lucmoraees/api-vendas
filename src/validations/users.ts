@@ -21,4 +21,11 @@ const update = celebrate({
 	},
 })
 
-export default { id, create, update }
+const changePassword = celebrate({
+	[Segments.BODY]: {
+		newPassword: Joi.string().min(6).required(),
+		oldPassword: Joi.string().min(6).required(),
+	},
+})
+
+export default { id, create, update, changePassword }
