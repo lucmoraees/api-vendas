@@ -1,5 +1,6 @@
 import { createConnection } from 'typeorm';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
+import Cliente from './models/Cliente';
 import Produto from './models/Produto';
 import User from './models/User';
 import UserToken from './models/UserToken';
@@ -15,6 +16,7 @@ createConnection({
 		Produto,
 		User,
 		UserToken,
+		Cliente,
 	],
   namingStrategy: new SnakeNamingStrategy(),
 })

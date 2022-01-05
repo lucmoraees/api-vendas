@@ -13,11 +13,11 @@ const create = async (data: CreateUser): Promise<User> => {
 }
 
 const getList = async (): Promise<User[]> => {
-	const produtosRepository = getRepository(User);
+	const usersRepository = getRepository(User);
 
-	const produtos = produtosRepository.find();
+	const users = usersRepository.find();
 
-	return produtos;
+	return users;
 }
 
 const updateUser = async (id: number, data: ObjectGeneric): Promise<void> => {

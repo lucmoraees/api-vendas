@@ -1,3 +1,4 @@
 export { default as validadeUsers } from './users';
 export { default as validateProdutos } from './produtos';
-export { default as validadeAuth } from './auth';
+export { default as validateAuth } from './auth';
+export { default as validateClientes } from './clientes';
