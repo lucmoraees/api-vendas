@@ -1,5 +1,5 @@
 const jwt = {
-  secret: '@[APIVENDAS]',
+  secret: process.env.APP_SECRET,
   expiresIn: '356d',
 };
 

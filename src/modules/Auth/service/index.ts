@@ -1,10 +1,10 @@
 import { compare, hash } from 'bcryptjs';
 import moment from 'moment';
 import { getCustomRepository } from 'typeorm';
+import { instanceToPlain  } from 'class-transformer';
 import UsersRepository from '../../../database/repositories/UsersRepository';
 import ExceptionError from '../../../errors/exceptionError';
 import { createTokenJwt, hashPassword } from '../../../utils';
-import { userWithouPassword } from '../../../views/users';
 import { Auth } from '../../../@types';
 import UsersTokensRepository from '../../../database/repositories/UsersTokensRepository';
 import userService from '../../Users/service';
@@ -26,7 +26,7 @@ const login = async (email: string, password: string): Promise<Auth>  => {
 		throw new ExceptionError('Email ou senha incorretos');
 	}
 
-	const userWhitoutPassword = userWithouPassword(user);
+	const userWhitoutPassword = instanceToPlain(user);
 
 	const tokenAuth = createTokenJwt(userWhitoutPassword);
 

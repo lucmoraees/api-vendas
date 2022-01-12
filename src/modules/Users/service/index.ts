@@ -1,6 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import { getCustomRepository } from 'typeorm';
+import { instanceToInstance } from 'class-transformer';
 import { CreateUser, ObjectGeneric } from '../../../@types';
 import User from '../../../database/models/User';
 import UsersRepository from '../../../database/repositories/UsersRepository';
@@ -57,7 +58,7 @@ const updateUser = async (id: number, data: ObjectGeneric): Promise<User> => {
 
 	await mapper.updateUser(id, data);
 
-	const updated = { ...user, ...data }
+	const updated = await mapper.getUserByQuery({ id });
 
 	return updated;
 }
@@ -82,7 +83,7 @@ const updateUserAvatar = async (id: number, fileName: string): Promise<User> => 
 
 	await mapper.updateUser(id, { avatar: fileName });
 
-	const updated = { ...user, avatar: fileName };
+	const updated = await mapper.getUserByQuery({ id });
 
 	return updated;
 }

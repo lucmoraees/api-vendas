@@ -1,6 +1,6 @@
 import service from '../service';
 import { Request, Response } from 'express';
-import { userWithouPassword } from '../../../views/users';
+import { instanceToInstance } from 'class-transformer';
 
 const create = async (req: Request, res: Response): Promise<Response> => {
 	try {
@@ -8,7 +8,7 @@ const create = async (req: Request, res: Response): Promise<Response> => {
 
 		const newUser = await service.create(params);
 
-		return res.json(userWithouPassword(newUser));
+		return res.json(instanceToInstance(newUser));
 	} catch (error) {
 		return res.status(400).json(error);
 	}
@@ -18,7 +18,7 @@ const getList = async (req: Request, res: Response): Promise<Response> => {
 	try {
 		const users = await service.getList();
 
-		return res.json(users);		
+		return res.json(instanceToInstance(users));		
 	} catch (error) {
 		return res.status(400).json(error);
 	}
@@ -30,7 +30,7 @@ const getUserById = async (req: Request, res: Response): Promise<Response> => {
 
 		const user = await service.getUserById(Number(id));
 
-		return res.json(userWithouPassword(user));
+		return res.json(instanceToInstance(user));
 	} catch (error) {
 		return res.status(400).json(error);
 	}
@@ -43,7 +43,7 @@ const updateUser = async (req: Request, res: Response): Promise<Response> => {
 
 		const update = await service.updateUser(id, params);
 
-		return res.json(userWithouPassword(update));		
+		return res.json(instanceToInstance(update));		
 	} catch (error) {
 		return res.status(400).json(error);
 	}
@@ -55,7 +55,7 @@ const updateUserAvatar = async (req: Request, res: Response): Promise<Response> 
 
 		const update = await service.updateUserAvatar(id, req.file.filename);
 
-		return res.json(userWithouPassword(update));		
+		return res.json(instanceToInstance(instanceToInstance(update)));		
 	} catch (error) {
 		return res.status(400).json(error);
 	}
