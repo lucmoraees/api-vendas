@@ -6,7 +6,7 @@ class addColumnInPedidos1641346761298 implements MigrationInterface {
     await queryRunner.addColumn(
 			'pedidos',
 			new TableColumn({
-				name: 'cliente_id',
+				name: 'clientes_id',
 				type: 'int',
 				isNullable: true,
 			})
@@ -15,8 +15,8 @@ class addColumnInPedidos1641346761298 implements MigrationInterface {
 		await queryRunner.createForeignKey(
 			'pedidos',
 			new TableForeignKey({
-				name: 'clientId',
-				columnNames: ['cliente_id'],
+				name: 'clientes_id',
+				columnNames: ['clientes_id'],
 				referencedTableName: 'clientes',
 				referencedColumnNames: ['id'],
 				onDelete: 'SET NULL',
@@ -25,9 +25,9 @@ class addColumnInPedidos1641346761298 implements MigrationInterface {
   };
 
   down = async (queryRunner: QueryRunner): Promise<void> => {
-    await queryRunner.dropForeignKey('pedidos', 'clientId');
+    await queryRunner.dropForeignKey('pedidos', 'clientes_id');
   
-		await queryRunner.dropColumn('pedidos', 'cliente_id');
+		await queryRunner.dropColumn('pedidos', 'clientes_id');
 	};
 }
 export default addColumnInPedidos1641346761298;

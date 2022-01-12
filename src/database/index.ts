@@ -4,12 +4,14 @@ import Cliente from './models/Cliente';
 import Produto from './models/Produto';
 import User from './models/User';
 import UserToken from './models/UserToken';
+import PedidoCompra from './models/PedidoCompra';
+import Pedido from './models/Pedido';
 
 createConnection({
-  type: 'postgres',
+  type: 'mysql',
   host: 'localhost',
-  port: 5432,
-  username: 'postgres',
+  port: 3306,
+  username: 'root',
   password: '123456',
   database: 'apivendas',
 	entities: [
@@ -17,6 +19,8 @@ createConnection({
 		User,
 		UserToken,
 		Cliente,
+		PedidoCompra,
+		Pedido,
 	],
   namingStrategy: new SnakeNamingStrategy(),
 })

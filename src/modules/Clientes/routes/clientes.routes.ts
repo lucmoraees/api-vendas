@@ -4,9 +4,9 @@ import { validateClientes } from '../../../validations';
 
 const clientesRoutes = Router();
 
-clientesRoutes.get('/clientes/:id', validateClientes.id, clientes.getClienteById);
-
 clientesRoutes.get('/clientes', clientes.getList);
+
+clientesRoutes.get('/clientes/:id', validateClientes.id, clientes.getClienteById);
 
 clientesRoutes.post('/clientes', validateClientes.create, clientes.create);
 

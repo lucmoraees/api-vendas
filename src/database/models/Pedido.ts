@@ -5,8 +5,10 @@ import {
 	CreateDateColumn,
 	ManyToOne,
 	JoinColumn,
+	OneToMany,
 } from 'typeorm';
 import Cliente from './Cliente';
+import PedidoCompra from './PedidoCompra';
 
 @Entity('pedidos')
 class Pedido {
@@ -14,8 +16,11 @@ class Pedido {
 	id: number;
 
 	@ManyToOne(() => Cliente)
-	@JoinColumn({ name: 'cliente_id' })
+	@JoinColumn({ name: 'clientes_id' }) 
 	cliente: Cliente;
+
+	@OneToMany(() => PedidoCompra, pedidoCompra => pedidoCompra.pedido, { cascade: true })
+	pedidoCompra: PedidoCompra[];
 
 	@UpdateDateColumn()
 	updatedAt: Date;

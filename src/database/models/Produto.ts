@@ -1,6 +1,7 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import PedidoCompra from './PedidoCompra';
 
-@Entity()
+@Entity('produtos')
 class Produto {
 	@PrimaryGeneratedColumn()
 	id: number;
@@ -13,6 +14,9 @@ class Produto {
 
 	@Column()
 	quantidade: number;
+
+	@OneToMany(() => PedidoCompra, pedidoCompra => pedidoCompra.pedido)
+	pedidoCompra: PedidoCompra[];
 
 	@UpdateDateColumn()
 	updatedAt: Date;

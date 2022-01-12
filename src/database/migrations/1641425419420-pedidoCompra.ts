@@ -1,10 +1,10 @@
 /* eslint-disable class-methods-use-this */
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-class vendas1641425419420 implements MigrationInterface {
+class pedidoCompra1641425419420 implements MigrationInterface {
   up = async (queryRunner: QueryRunner): Promise<void> => {
     await queryRunner.createTable(new Table({
-      name: 'vendas',
+      name: 'pedido_compra',
       columns: [
 				{
 					name: 'id',
@@ -25,12 +25,12 @@ class vendas1641425419420 implements MigrationInterface {
 				},
 				{
 					name: 'created_at',
-					type: 'timestamp',
+					type: 'datetime',
 					default: 'now()',
 				},
 				{
 					name: 'updated_at',
-					type: 'timestamp',
+					type: 'datetime',
 					default: 'now()',
 				},
 			],
@@ -38,7 +38,7 @@ class vendas1641425419420 implements MigrationInterface {
   };
 
   down = async (queryRunner: QueryRunner): Promise<void> => {
-    await queryRunner.dropTable('vendas');
+    await queryRunner.dropTable('pedido_compra');
   };
 }
-export default vendas1641425419420;
+export default pedidoCompra1641425419420;

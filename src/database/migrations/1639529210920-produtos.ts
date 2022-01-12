@@ -29,12 +29,12 @@ class produtos1639529210920 implements MigrationInterface {
 				},
 				{
 					name: 'created_at',
-					type: 'timestamp',
+					type: 'datetime',
 					default: 'now()',
 				},
 				{
 					name: 'updated_at',
-					type: 'timestamp',
+					type: 'datetime',
 					default: 'now()',
 				},
 			],

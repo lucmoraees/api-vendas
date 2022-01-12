@@ -19,18 +19,18 @@ class userTokens1640384516042 implements MigrationInterface {
 				},
 				{
 					name: 'token',
-					type: 'uuid',
+					type: 'varchar',
 					generationStrategy: 'uuid',
-					default: 'uuid_generate_v4()',
+					isUnique: true,
 				},
 				{
 					name: 'created_at',
-					type: 'timestamp',
+					type: 'datetime',
 					default: 'now()',
 				},
 				{
 					name: 'updated_at',
-					type: 'timestamp',
+					type: 'datetime',
 					default: 'now()',
 				},
 			],

@@ -15,12 +15,12 @@ class pedidos1641346711112 implements MigrationInterface {
 				},
 				{
 					name: 'created_at',
-					type: 'timestamp',
+					type: 'datetime',
 					default: 'now()',
 				},
 				{
 					name: 'updated_at',
-					type: 'timestamp',
+					type: 'datetime',
 					default: 'now()',
 				},
 			],

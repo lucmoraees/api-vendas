@@ -1,23 +1,23 @@
 /* eslint-disable class-methods-use-this */
 import { MigrationInterface, QueryRunner, Table, TableColumn, TableForeignKey } from 'typeorm';
 
-class addColumnInVendas1641425958550 implements MigrationInterface {
+class addColumnInPedidoCompra1641425614005 implements MigrationInterface {
   up = async (queryRunner: QueryRunner): Promise<void> => {
     await queryRunner.addColumn(
-			'vendas',
+			'pedido_compra',
 			new TableColumn({
-				name: 'produtos_id',
+				name: 'pedidos_id',
 				type: 'int',
 				isNullable: true,
 			})
 		);
 
 		await queryRunner.createForeignKey(
-			'vendas',
+			'pedido_compra',
 			new TableForeignKey({
-				name: 'produtosId',
-				columnNames: ['produtos_id'],
-				referencedTableName: 'produtos',
+				name: 'pedidos_id',
+				columnNames: ['pedidos_id'],
+				referencedTableName: 'pedidos',
 				referencedColumnNames: ['id'],
 				onDelete: 'SET NULL',
 			}),
@@ -25,9 +25,9 @@ class addColumnInVendas1641425958550 implements MigrationInterface {
   };
 
   down = async (queryRunner: QueryRunner): Promise<void> => {
-    await queryRunner.dropForeignKey('vendas', 'produtos_id');
+    await queryRunner.dropForeignKey('pedido_compra', 'pedidos_id');
   
-		await queryRunner.dropColumn('vendas', 'produtos_id');
+		await queryRunner.dropColumn('pedido_compra', 'pedidos_id');
 	};
 }
-export default addColumnInVendas1641425958550;
+export default addColumnInPedidoCompra1641425614005;
