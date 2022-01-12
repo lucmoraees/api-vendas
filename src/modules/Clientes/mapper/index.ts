@@ -1,5 +1,5 @@
 import { getRepository, getManager } from 'typeorm';
-import { CreateCliente, ObjectGeneric } from '../../../@types';
+import { CreateCliente, ObjectGeneric, PaginateClientes } from '../../../@types';
 import Cliente from '../../../database/models/Cliente';
 
 const create = async (data: CreateCliente): Promise<Cliente> => {	
@@ -12,12 +12,12 @@ const create = async (data: CreateCliente): Promise<Cliente> => {
 	return novoCliente;
 }
 
-const getList = async (): Promise<Cliente[]> => {
+const getList = async (): Promise<PaginateClientes> => {
 	const clientesRepository = getRepository(Cliente);
 
-	const clientes = clientesRepository.find();
+	const clientes = await clientesRepository.createQueryBuilder().paginate();
 
-	return clientes;
+	return clientes as PaginateClientes;
 }
 
 const updateCliente = async (id: number, data: ObjectGeneric): Promise<void> => {

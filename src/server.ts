@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import express from 'express';
 import 'express-async-errors';
 import cors from 'cors';
+import { pagination } from 'typeorm-pagination';
 import routes from './routes';
 import AppError from './middlewares/AppError';
 import Authentication from './middlewares/Authentication';
@@ -13,6 +14,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(pagination);
 app.use(Authentication);
 app.use(routes);
 app.use('/files', express.static(uploadConfigs.directory));
