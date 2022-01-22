@@ -1,5 +1,5 @@
 import { getCustomRepository } from 'typeorm';
-import { CreateCliente, ObjectGeneric } from '../../../@types';
+import { CreateCliente, ObjectGeneric, PaginateClientes } from '../../../@types';
 import Cliente from '../../../database/models/Cliente';
 import ClientesRepository from '../../../database/repositories/ClientesRepository';
 import ExceptionError from '../../../errors/exceptionError';
@@ -31,7 +31,7 @@ const getClienteById = async (id: number): Promise<Cliente> => {
 	return cliente;
 }
 
-const getList = async (): Promise<Cliente[]> => {
+const getList = async (): Promise<PaginateClientes> => {
 	const clientes = await mapper.getList();
 
 	return clientes;

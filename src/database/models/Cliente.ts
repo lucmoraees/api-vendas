@@ -5,9 +5,10 @@ import {
 	UpdateDateColumn,
 	CreateDateColumn,
 } from 'typeorm';
+import { ICliente } from '../../@types';
 
 @Entity('clientes')
-class Cliente {
+class Cliente implements ICliente {
 	@PrimaryGeneratedColumn()
 	id: number;
 
