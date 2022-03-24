@@ -6,9 +6,10 @@ import {
 	CreateDateColumn,
 } from 'typeorm';
 import { Exclude, Expose } from 'class-transformer';
+import { IUser } from '../../@types';
 
 @Entity('users')
-class User {
+class User implements IUser {
 	@PrimaryGeneratedColumn()
 	id: number;
 

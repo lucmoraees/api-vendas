@@ -1,5 +1,13 @@
 import Cliente from "../database/models/Cliente";
 
+export interface ICliente {
+	id: number;
+	nome: string;
+	email: string;
+	createdAt: Date;
+	updatedAt: Date;
+}
+
 export interface CreateCliente {
 	nome: string;
 	email: string;

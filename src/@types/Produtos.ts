@@ -1,3 +1,12 @@
+export interface IProduto {
+	id: number;
+	nome: string;
+	valor: number;
+	quantidade: number;
+	updatedAt: Date;
+	createdAt: Date;
+}
+
 export interface CreateProduto {
 	nome: string;
 	valor: number;

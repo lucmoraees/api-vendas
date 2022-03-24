@@ -22,14 +22,10 @@ class PedidosRepository extends Repository<Pedido> {
 	}
 
 	public async createPedido({ cliente, produtos }: PedidoCreate): Promise<Pedido | undefined> {
-		console.log(produtos);
-
 		const pedido = this.create({
 			cliente,
 			pedidoCompra: produtos,
 		});
-
-
 
 		await this.save(pedido);
 

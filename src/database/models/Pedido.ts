@@ -7,11 +7,12 @@ import {
 	JoinColumn,
 	OneToMany,
 } from 'typeorm';
+import { IPedido } from '../../@types';
 import Cliente from './Cliente';
 import PedidoCompra from './PedidoCompra';
 
 @Entity('pedidos')
-class Pedido {
+class Pedido implements IPedido {
 	@PrimaryGeneratedColumn()
 	id: number;
 

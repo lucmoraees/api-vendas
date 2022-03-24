@@ -1,8 +1,9 @@
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import PedidoCompra from './PedidoCompra';
+import { IProduto } from '../../@types';
 
 @Entity('produtos')
-class Produto {
+class Produto implements IProduto {
 	@PrimaryGeneratedColumn()
 	id: number;
 

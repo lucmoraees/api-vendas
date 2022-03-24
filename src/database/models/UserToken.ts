@@ -6,9 +6,10 @@ import {
 	CreateDateColumn,
 	Generated,
 } from 'typeorm';
+import { IUserToken } from '../../@types';
 
 @Entity('users_tokens')
-class UserToken {
+class UserToken implements IUserToken {
 	@PrimaryGeneratedColumn()
 	id: number;
 

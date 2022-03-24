@@ -4,6 +4,7 @@ import Produto from '../../../database/models/Produto';
 import ProdutosRepository from '../../../database/repositories/ProdutosRepository';
 import ExceptionError from '../../../errors/exceptionError';
 import mapper from '../mapper';
+import RedisCache from '../../../cache/redis';
 
 const create = async (data: CreateProduto): Promise<Produto> => {
 	const produtoRepository = getCustomRepository(ProdutosRepository);
